@@ -4,7 +4,7 @@ import { SiOpenaccess } from "react-icons/si";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const LogoutButton = () => {
+export const LogoutButton = ({ open }) => {
   const { loading, userInfo, userToken } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();

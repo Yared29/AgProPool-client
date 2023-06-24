@@ -67,7 +67,7 @@ const Sidebar = () => {
             </Link>
           ))}
 
-          <LogoutButton />
+          <LogoutButton open={open} />
         </ul>
       </div>
       {/* Mobile Menu */}

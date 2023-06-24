@@ -40,7 +40,7 @@ const Transactions = () => {
   return (
     <div>
       <TableTitle title='Transactions' addRoute='/add-transaction' />
-      <div className='flex flex-col '>
+      <div className=' '>
         <div className='flex flex-row px-8 pb-5'>
           <div className='flex flex-col items-center justify-start float-left '>
             <input
