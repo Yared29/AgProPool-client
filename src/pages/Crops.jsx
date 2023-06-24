@@ -4,7 +4,6 @@ import TableTitle from "../components/TableTitle";
 import { useEffect } from "react";
 import { isEmpty } from "../utils/isEmpty";
 import { Loading } from "../components/Loading";
-import Error from "../components/Error";
 import { addCrop, getCropsList } from "../redux/actions/cropActions";
 import Empty from "../components/Empty";
 import { Formik } from "formik";
@@ -25,7 +24,6 @@ const Crops = () => {
   };
 
   if (loading) return <Loading />;
-  if (!isEmpty(error)) return <Error message={error} />;
 
   return (
     <div>
@@ -56,12 +54,12 @@ const Crops = () => {
               <form className='flex flex-col' onSubmit={handleSubmit}>
                 {error && <div className='text-red-500'>{error}</div>}
                 <label
-                  className='block mt-2 text-xs font-semibold text-gray-100 uppercase pb-2'
+                  className='p-1 block mt-2 text-xs font-semibold text-gray-100 uppercase pb-2'
                   htmlFor='username'>
                   Crop Name
                 </label>
                 <div className='flex  flex-wrap  content-center items-center'>
-                  <div className='w-60 h-12  p-1'>
+                  <div className='lg:w-60 md:w-60 w-40  h-12  p-1'>
                     <input
                       className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                       placeholder='Teff'
@@ -72,16 +70,16 @@ const Crops = () => {
                       value={values.name}
                     />
                   </div>
-                  <div className='h-12  p-1'>
+                  <div className='h-12 p-1'>
                     <button
                       type='submit'
                       disabled={loading}
-                      className='text-sm h-10 p-2 font-normal tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none'>
-                      {loading ? "Loading" : "Add Crop"}
+                      className='rounded text-sm h-9 p-2 font-normal tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none'>
+                      {loading ? "Loading" : "Add"}
                     </button>
                   </div>
                 </div>
-                <div className='text-red-500'>
+                <div className='text-red-500 p-1'>
                   {errors.name && touched.name && errors.name}
                 </div>
               </form>

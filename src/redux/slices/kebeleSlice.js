@@ -4,6 +4,7 @@ import {
   getKebelesList,
   getKebelesListForDropdown,
 } from "../actions/kebeleActions";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: false,
@@ -24,12 +25,13 @@ const kebeleSlice = createSlice({
       state.error = null;
     },
     [addKebele.fulfilled]: (state, { payload }) => {
-      console.log(payload);
+      toast.success("Farmer added successfully!");
       state.loading = false;
       state.kebelesList = [payload, ...state.kebelesList];
       state.kebelesListForDropdown = [payload, ...state.kebelesListForDropdown];
     },
     [addKebele.rejected]: (state, { payload }) => {
+      toast.error(payload);
       state.loading = false;
       state.error = payload;
     },
@@ -40,7 +42,6 @@ const kebeleSlice = createSlice({
       state.error = null;
     },
     [getKebelesList.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.kebelesList = payload;
     },

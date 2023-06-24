@@ -2,9 +2,9 @@ import { Navigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 const PrivateRoute = ({ children }) => {
-  let user = localStorage.getItem("user");
+  let userInfo = localStorage.getItem("userInfo");
 
-  if (!user) {
+  if (!userInfo) {
     return <Navigate to='/signin' replace />;
   }
   return <Layout>{children}</Layout>;

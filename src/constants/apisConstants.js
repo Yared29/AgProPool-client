@@ -4,10 +4,13 @@ export const LOGIN_API = USER_API + "/login-user";
 export const REGISTER_API = USER_API + "/register";
 export const REGISTER_FARMER_API = USER_API + "/register-farmer";
 export const FARMER_API = USER_API + "/farmers";
+export const FARMER_DROPDOWN_API = FARMER_API + "/dropdown";
 export const REGISTER_FARMER_AGENT_API = USER_API + "/register-farmer-agent";
 export const MEDIATOR_API = USER_API + "/mediators";
 export const REGISTER_MEDIATOR_API = USER_API + "/register-mediator";
 export const TRANSACTION_API = BASE_URL + "/transaction";
+export const TRANSACTION_CROPS_WITH_COUNT_API =
+  TRANSACTION_API + "/crops-transaction-with-count";
 export const ADD_TRANSACTION_API = TRANSACTION_API + "/create";
 export const CROP_API = BASE_URL + "/crop";
 export const ADD_CROP_API = CROP_API + "/add";

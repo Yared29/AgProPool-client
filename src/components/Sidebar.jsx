@@ -1,7 +1,8 @@
-import { BsArrowLeftCircle } from "react-icons/bs";
+import { BsArrowLeftCircle, BsFillBuildingFill } from "react-icons/bs";
 import { AiFillPieChart } from "react-icons/ai";
-import { SiFuturelearn, SiOpenaccess } from "react-icons/si";
+import { SiFuturelearn } from "react-icons/si";
 import { CgProfile } from "react-icons/cg";
+import { GiTreeBranch } from "react-icons/gi";
 import HamburgerButton from "./HamburgerMenuButton/HamburgerButton";
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
@@ -16,13 +17,13 @@ const Sidebar = () => {
     { title: "Dashboard", path: "/dashboard", src: <AiFillPieChart /> },
     { title: "Transactions", path: "/transactions", src: <SiFuturelearn /> },
     { title: "Farmers", path: "/farmers", src: <CgProfile /> },
-    {
-      title: "Mediators",
-      path: "/mediators",
-      src: <SiOpenaccess />,
-    },
-    { title: "Kebeles", path: "/kebeles", src: <SiOpenaccess /> },
-    { title: "Crops", path: "/crops", src: <SiOpenaccess /> },
+    // {
+    //   title: "Mediators",
+    //   path: "/mediators",
+    //   src: <SiOpenaccess />,
+    // },
+    { title: "Kebeles", path: "/kebeles", src: <BsFillBuildingFill /> },
+    { title: "Crops", path: "/crops", src: <GiTreeBranch /> },
   ];
 
   return (

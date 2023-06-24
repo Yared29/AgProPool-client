@@ -4,6 +4,7 @@ import {
   getCropsList,
   getCropsListForDropdown,
 } from "../actions/cropActions";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: false,
@@ -23,11 +24,12 @@ const cropSlice = createSlice({
       state.error = null;
     },
     [addCrop.fulfilled]: (state, { payload }) => {
-      console.log(payload);
+      toast.success("Crop added successfully!");
       state.loading = false;
       state.cropsList = [payload, ...state.cropsList];
     },
     [addCrop.rejected]: (state, { payload }) => {
+      toast.error(payload);
       state.loading = false;
       state.error = payload;
     },

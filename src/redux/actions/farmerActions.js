@@ -1,6 +1,10 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { REGISTER_FARMER_API, FARMER_API } from "../../constants/apisConstants";
+import {
+  REGISTER_FARMER_API,
+  FARMER_API,
+  FARMER_DROPDOWN_API,
+} from "../../constants/apisConstants";
 
 export const registerFarmer = createAsyncThunk(
   "farmer/register",
@@ -43,6 +47,31 @@ export const getFarmersList = createAsyncThunk(
         },
       };
       const response = await axios.get(FARMER_API, config);
+      const { data } = response;
+
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const getFarmersListForDropdown = createAsyncThunk(
+  "farmer/dropdown",
+  async (_, { rejectWithValue }) => {
+    try {
+      const userToken = await localStorage.getItem("userToken");
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userToken,
+        },
+      };
+      const response = await axios.get(FARMER_DROPDOWN_API, config);
       const { data } = response;
 
       return data;

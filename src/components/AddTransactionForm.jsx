@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { useEffect } from "react";
 import { getCropsListForDropdown } from "../redux/actions/cropActions";
 import { Loading } from "./Loading";
+import { getFarmersListForDropdown } from "../redux/actions/farmerActions";
 
 const initialValues = {
   name: "",
@@ -28,6 +29,8 @@ const AddTransactionForm = () => {
   const { cropsListForDropdown, loadingCropOptions = loading } = useSelector(
     (state) => state.crop
   );
+  const { farmersListForDropdown, loadingFarmersOptions = loading } =
+    useSelector((state) => state.farmer);
   const dispatch = useDispatch();
 
   const submitForm = (data) => {
@@ -36,8 +39,9 @@ const AddTransactionForm = () => {
 
   useEffect(() => {
     dispatch(getCropsListForDropdown());
+    dispatch(getFarmersListForDropdown());
   }, []);
-  if (loadingCropOptions) return <Loading />;
+  if (loadingCropOptions || loadingFarmersOptions) return <Loading />;
 
   return (
     <div className='flex flex-col items-center mx-auto justify-center'>
@@ -67,10 +71,7 @@ const AddTransactionForm = () => {
                 width='80'
                 isMulti={false}
                 component={CustomeSelect}
-                options={[
-                  { value: "Abebe", label: "Abebe" },
-                  { value: "Kebede", label: "Kebede" },
-                ]}
+                options={farmersListForDropdown}
                 error={errors.name && touched.name && errors.name}
               />
 
