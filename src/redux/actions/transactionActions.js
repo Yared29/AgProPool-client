@@ -39,14 +39,18 @@ export const addTransaction = createAsyncThunk(
 
 export const getTransactionsList = createAsyncThunk(
   "transaction/all",
-  async (_, { rejectWithValue }) => {
+  async (selectedDate, { rejectWithValue }) => {
     try {
+      console.log(selectedDate);
       const userToken = await localStorage.getItem("userToken");
 
       const config = {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + userToken,
+        },
+        params: {
+          selectedDate: selectedDate,
         },
       };
       const response = await axios.get(TRANSACTION_API, config);
