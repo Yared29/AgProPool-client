@@ -4,6 +4,10 @@ const CustomeTextField = ({
   placeholder,
   id,
   width = "60",
+  handleChange,
+  handleBlur,
+  value,
+  error,
 }) => {
   return (
     <div className={"w-" + width + " p-2"}>
@@ -17,7 +21,11 @@ const CustomeTextField = ({
         id={id}
         type={type}
         placeholder={placeholder}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={value}
       />
+      <div className='text-red-500'>{error}</div>
     </div>
   );
 };

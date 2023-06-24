@@ -8,8 +8,8 @@ import Kebeles from "./pages/Kebeles";
 import Crops from "./pages/Crops";
 import PrivateRoute from "./utils/PrivateRoute";
 import PublicRoute from "./utils/PublicRoute";
-import AddTransactionForm from "./components/AddTransactionForm";
-import AddFarmerForm from "./components/AddFarmerForm";
+import AddFarmerPage from "./pages/AddFarmerPage";
+import AddTransactionPage from "./pages/AddTransactionPage";
 
 const routes = [
   {
@@ -72,7 +72,7 @@ const routes = [
     path: "add-transaction",
     element: (
       <PrivateRoute>
-        <AddTransactionForm />
+        <AddTransactionPage />
       </PrivateRoute>
     ),
   },
@@ -80,7 +80,7 @@ const routes = [
     path: "add-farmer",
     element: (
       <PrivateRoute>
-        <AddFarmerForm />
+        <AddFarmerPage />
       </PrivateRoute>
     ),
   },

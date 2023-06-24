@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerFarmer } from "../actions/farmerActions";
+import { registerFarmer, getFarmersList } from "../actions/farmerActions";
 
 const initialState = {
   loading: false,
@@ -21,8 +21,24 @@ const farmerSlice = createSlice({
     [registerFarmer.fulfilled]: (state, { payload }) => {
       console.log(payload);
       state.loading = false;
+      state.farmersList = [...state.farmersList, payload];
     },
     [registerFarmer.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+
+    // get all farmers
+    [getFarmersList.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [getFarmersList.fulfilled]: (state, { payload }) => {
+      console.log(payload);
+      state.loading = false;
+      state.farmersList = payload;
+    },
+    [getFarmersList.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },

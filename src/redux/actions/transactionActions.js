@@ -1,13 +1,16 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { REGISTER_FARMER_API, FARMER_API } from "../../constants/apisConstants";
+import {
+  ADD_TRANSACTION_API,
+  TRANSACTION_API,
+} from "../../constants/apisConstants";
 
-export const registerFarmer = createAsyncThunk(
-  "farmer/register",
-  async ({ name, kebele, age, gender, phone }, { rejectWithValue }) => {
+export const addTransaction = createAsyncThunk(
+  "transaction/add",
+  async ({ name, crop, quantity }, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
-      console.log("Bearer " + userToken);
+
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -15,11 +18,13 @@ export const registerFarmer = createAsyncThunk(
         },
       };
       const response = await axios.post(
-        REGISTER_FARMER_API,
-        { name, kebele, age, gender, phone },
+        ADD_TRANSACTION_API,
+        { farmer_name: name, crop, quantity },
         config
       );
+      console.log("response: ", response);
       const { data } = response;
+      console.log("data: ", data);
 
       return data;
     } catch (error) {
@@ -32,19 +37,19 @@ export const registerFarmer = createAsyncThunk(
   }
 );
 
-export const getFarmersList = createAsyncThunk(
-  "farmer/all",
+export const getTransactionsList = createAsyncThunk(
+  "transaction/all",
   async (_, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
-      console.log("Bearer " + userToken);
+
       const config = {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + userToken,
         },
       };
-      const response = await axios.get(FARMER_API, config);
+      const response = await axios.get(TRANSACTION_API, config);
       const { data } = response;
 
       return data;

@@ -3,4 +3,7 @@ export const USER_API = BASE_URL + "/user";
 export const LOGIN_API = USER_API + "/login-user";
 export const REGISTER_API = USER_API + "/register";
 export const REGISTER_FARMER_API = USER_API + "/register-farmer";
+export const FARMER_API = USER_API + "/farmers";
 export const REGISTER_FARMER_AGENT_API = USER_API + "/register-farmer-agent";
+export const TRANSACTION_API = BASE_URL + "/transaction";
+export const ADD_TRANSACTION_API = TRANSACTION_API + "/create";

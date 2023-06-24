@@ -5,17 +5,29 @@ const options = [
   { value: "strawberry", label: "Strawberry" },
   { value: "vanilla", label: "Vanilla" },
 ];
-const CustomMultipleSelect = ({ title, width = "60" }) => {
+const CustomCreatableSelect = ({
+  title,
+  width = "60",
+  handleChange,
+  handleBlur,
+  value,
+}) => {
   return (
     <div className={"w-" + width + " p-2"}>
       <div className='block mt-2 text-xs font-semibold text-gray-100 uppercase pb-2'>
         {title}
       </div>
       <div className=' min-w-full'>
-        <CreatableSelect isMulti options={options} />
+        <CreatableSelect
+          isMulti
+          options={options}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={value}
+        />
       </div>
     </div>
   );
 };
 
-export default CustomMultipleSelect;
+export default CustomCreatableSelect;
