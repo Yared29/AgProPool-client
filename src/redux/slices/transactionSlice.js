@@ -24,7 +24,7 @@ const transactionSlice = createSlice({
     [addTransaction.fulfilled]: (state, { payload }) => {
       console.log(payload);
       state.loading = false;
-      state.transactionsList = [...state.transactionsList, payload];
+      state.transactionsList = [payload, ...state.transactionsList];
     },
     [addTransaction.rejected]: (state, { payload }) => {
       state.loading = false;

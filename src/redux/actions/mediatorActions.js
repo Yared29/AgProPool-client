@@ -1,13 +1,13 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  ADD_TRANSACTION_API,
-  TRANSACTION_API,
+  REGISTER_MEDIATOR_API,
+  MEDIATOR_API,
 } from "../../constants/apisConstants";
 
-export const addTransaction = createAsyncThunk(
-  "transaction/add",
-  async ({ name, crop, quantity }, { rejectWithValue }) => {
+export const registerMediator = createAsyncThunk(
+  "mediator/register",
+  async ({ name, kebele, age, gender, phone }, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
 
@@ -18,11 +18,10 @@ export const addTransaction = createAsyncThunk(
         },
       };
       const response = await axios.post(
-        ADD_TRANSACTION_API,
-        { farmer_name: name, crop, quantity },
+        REGISTER_MEDIATOR_API,
+        { name, kebele, age, gender, phone },
         config
       );
-
       const { data } = response;
 
       return data;
@@ -36,9 +35,9 @@ export const addTransaction = createAsyncThunk(
   }
 );
 
-export const getTransactionsList = createAsyncThunk(
-  "transaction/all",
-  async (selectedDate, { rejectWithValue }) => {
+export const getMediatorsList = createAsyncThunk(
+  "mediator/all",
+  async (_, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
 
@@ -47,11 +46,8 @@ export const getTransactionsList = createAsyncThunk(
           "Content-Type": "application/json",
           Authorization: "Bearer " + userToken,
         },
-        params: {
-          selectedDate: selectedDate,
-        },
       };
-      const response = await axios.get(TRANSACTION_API, config);
+      const response = await axios.get(MEDIATOR_API, config);
       const { data } = response;
 
       return data;

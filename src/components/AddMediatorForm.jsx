@@ -1,19 +1,15 @@
 import CustomeTextField from "./Form/CustomeTextField";
 import { Field, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { registerFarmer } from "../redux/actions/farmerActions";
+import { registerMediator } from "../redux/actions/mediatorActions";
 import CustomeSelect from "./Form/CustomeSelect";
 import * as Yup from "yup";
-import { useEffect } from "react";
-import { getKebelesListForDropdown } from "../redux/actions/kebeleActions";
-import { Loading } from "./Loading";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const initialValues = {
   name: "",
-  age: "",
   phone: "",
   gender: "",
   kebele: "",
@@ -24,7 +20,6 @@ const RegisterFamrmerSchema = Yup.object().shape({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  age: Yup.number().required("Required"),
   gender: Yup.string().required("Required"),
   kebele: Yup.string().required("Required"),
   phone: Yup.string()
@@ -33,19 +28,14 @@ const RegisterFamrmerSchema = Yup.object().shape({
     .matches(phoneRegExp, "Phone number is not valid"),
 });
 
-const AddFarmerForm = () => {
-  const { loading, error } = useSelector((state) => state.farmer);
-  const { kebelesListForDropdown, loadingKebeleOptions = loading } =
-    useSelector((state) => state.kebele);
+const AddMediatorForm = () => {
+  const { loading, error } = useSelector((state) => state.mediator);
   const dispatch = useDispatch();
 
   const submitForm = (data) => {
-    dispatch(registerFarmer(data));
+    dispatch(registerMediator(data));
   };
-  useEffect(() => {
-    dispatch(getKebelesListForDropdown());
-  }, []);
-  if (loadingKebeleOptions) return <Loading />;
+
   return (
     <div className='flex flex-col items-center mx-auto justify-center'>
       <Formik
@@ -67,7 +57,7 @@ const AddFarmerForm = () => {
               {error && <div className='text-red-500'>{error}</div>}
 
               <CustomeTextField
-                title='Farmer Name'
+                title='Mediator Name'
                 type='text'
                 placeholder='Abebe Kebede'
                 id='name'
@@ -76,17 +66,6 @@ const AddFarmerForm = () => {
                 handleBlur={handleBlur}
                 value={values.name}
                 error={errors.name && touched.name && errors.name}
-              />
-              <CustomeTextField
-                title='Age'
-                type='number'
-                placeholder='40'
-                id='age'
-                width='80'
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                value={values.age}
-                error={errors.age && touched.age && errors.age}
               />
 
               <Field
@@ -123,7 +102,11 @@ const AddFarmerForm = () => {
                 width='80'
                 isMulti={false}
                 component={CustomeSelect}
-                options={kebelesListForDropdown}
+                options={[
+                  { value: "one", label: "One" },
+                  { value: "two", label: "Two" },
+                  { value: "three", label: "Three" },
+                ]}
                 error={errors.kebele && touched.kebele && errors.kebele}
               />
             </div>
@@ -131,7 +114,7 @@ const AddFarmerForm = () => {
               type='submit'
               disabled={loading}
               className='w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none'>
-              {loading ? "Loading" : "Register Farmer"}
+              {loading ? "Loading" : "Register Mediator"}
             </button>
           </form>
         )}
@@ -140,4 +123,4 @@ const AddFarmerForm = () => {
   );
 };
 
-export default AddFarmerForm;
+export default AddMediatorForm;

@@ -10,6 +10,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import PublicRoute from "./utils/PublicRoute";
 import AddFarmerPage from "./pages/AddFarmerPage";
 import AddTransactionPage from "./pages/AddTransactionPage";
+import AddMediatorPage from "./pages/AddMediatorPage";
 
 const routes = [
   {
@@ -81,6 +82,14 @@ const routes = [
     element: (
       <PrivateRoute>
         <AddFarmerPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "add-mediator",
+    element: (
+      <PrivateRoute>
+        <AddMediatorPage />
       </PrivateRoute>
     ),
   },

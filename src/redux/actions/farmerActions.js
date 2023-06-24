@@ -7,7 +7,6 @@ export const registerFarmer = createAsyncThunk(
   async ({ name, kebele, age, gender, phone }, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
-      console.log("Bearer " + userToken);
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +36,6 @@ export const getFarmersList = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
-      console.log("Bearer " + userToken);
       const config = {
         headers: {
           "Content-Type": "application/json",
