@@ -65,9 +65,9 @@ const Transactions = () => {
                   {index + 1}
                 </td>
                 <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                  {isEmpty(transaction.farmer_name)
+                  {isEmpty(transaction.farmer.name)
                     ? "N/A"
-                    : transaction.farmer_name}
+                    : transaction.farmer.name}
                 </td>
                 <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
                   {isEmpty(transaction.crop.name)

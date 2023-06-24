@@ -20,7 +20,7 @@ export const addTransaction = createAsyncThunk(
       };
       const response = await axios.post(
         ADD_TRANSACTION_API,
-        { farmer_name: name, crop, quantity },
+        { farmer: name, crop, quantity },
         config
       );
 
