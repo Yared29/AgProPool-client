@@ -40,7 +40,7 @@ const Transactions = () => {
   return (
     <div>
       <TableTitle title='Transactions' addRoute='/add-transaction' />
-      <div className='flex flex-col '>
+      <div className=' '>
         <div className='flex flex-row px-8 pb-5'>
           <div className='flex flex-col items-center justify-start float-left '>
             <input
@@ -70,7 +70,9 @@ const Transactions = () => {
                     : transaction.farmer_name}
                 </td>
                 <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                  {isEmpty(transaction.crop) ? "N/A" : transaction.crop}
+                  {isEmpty(transaction.crop.name)
+                    ? "N/A"
+                    : transaction.crop.name}
                 </td>
                 <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
                   {isEmpty(transaction.quantity) ? "N/A" : transaction.quantity}

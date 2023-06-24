@@ -1,14 +1,14 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  REGISTER_FARMER_API,
-  FARMER_API,
-  FARMER_DROPDOWN_API,
+  ADD_CROP_API,
+  CROP_API,
+  CROP_DROPDOWN_API,
 } from "../../constants/apisConstants";
 
-export const registerFarmer = createAsyncThunk(
-  "farmer/register",
-  async ({ name, kebele, age, gender, phone }, { rejectWithValue }) => {
+export const addCrop = createAsyncThunk(
+  "crop/add",
+  async ({ name }, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
       const config = {
@@ -17,11 +17,7 @@ export const registerFarmer = createAsyncThunk(
           Authorization: "Bearer " + userToken,
         },
       };
-      const response = await axios.post(
-        REGISTER_FARMER_API,
-        { name, kebele, age, gender, phone },
-        config
-      );
+      const response = await axios.post(ADD_CROP_API, { name }, config);
       const { data } = response;
 
       return data;
@@ -35,8 +31,8 @@ export const registerFarmer = createAsyncThunk(
   }
 );
 
-export const getFarmersList = createAsyncThunk(
-  "farmer/all",
+export const getCropsList = createAsyncThunk(
+  "crop/all",
   async (_, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
@@ -46,7 +42,7 @@ export const getFarmersList = createAsyncThunk(
           Authorization: "Bearer " + userToken,
         },
       };
-      const response = await axios.get(FARMER_API, config);
+      const response = await axios.get(CROP_API, config);
       const { data } = response;
 
       return data;
@@ -60,8 +56,8 @@ export const getFarmersList = createAsyncThunk(
   }
 );
 
-export const getFarmersListForDropdown = createAsyncThunk(
-  "farmer/dropdown",
+export const getCropsListForDropdown = createAsyncThunk(
+  "crop/dropdown",
   async (_, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
@@ -71,7 +67,7 @@ export const getFarmersListForDropdown = createAsyncThunk(
           Authorization: "Bearer " + userToken,
         },
       };
-      const response = await axios.get(FARMER_DROPDOWN_API, config);
+      const response = await axios.get(CROP_DROPDOWN_API, config);
       const { data } = response;
 
       return data;

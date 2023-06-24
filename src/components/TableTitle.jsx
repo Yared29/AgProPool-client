@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 const TableTitle = ({ showButton = true, title, addRoute }) => {
   return (
     <div
-      className={`px-8 pb-4 mx-auto text-center flex flex-row ${
+      className={`px-8 pb-4 mx-auto text-center flex flex-wrap ${
         showButton ? "justify-between " : "justify-center"
       }`}>
-      <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
+      <span className='lg:text-xl md:text-xl text:sm font-medium whitespace-nowrap dark:text-white'>
         {title}
       </span>
       {showButton && (
         <Link
           to={addRoute}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-          Add new {title}
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 lg:p-2 md:p-2 rounded'>
+          Create
         </Link>
       )}
     </div>

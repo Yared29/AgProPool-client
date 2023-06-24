@@ -3,6 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   ADD_TRANSACTION_API,
   TRANSACTION_API,
+  TRANSACTION_CROPS_WITH_COUNT_API,
 } from "../../constants/apisConstants";
 
 export const addTransaction = createAsyncThunk(
@@ -22,9 +23,8 @@ export const addTransaction = createAsyncThunk(
         { farmer_name: name, crop, quantity },
         config
       );
-      console.log("response: ", response);
+
       const { data } = response;
-      console.log("data: ", data);
 
       return data;
     } catch (error) {
@@ -41,7 +41,6 @@ export const getTransactionsList = createAsyncThunk(
   "transaction/all",
   async (selectedDate, { rejectWithValue }) => {
     try {
-      console.log(selectedDate);
       const userToken = await localStorage.getItem("userToken");
 
       const config = {
@@ -54,6 +53,38 @@ export const getTransactionsList = createAsyncThunk(
         },
       };
       const response = await axios.get(TRANSACTION_API, config);
+      const { data } = response;
+
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const getTransactionCropsQuantityList = createAsyncThunk(
+  "transaction/transaction-crops-with-count",
+  async (selectedDate, { rejectWithValue }) => {
+    try {
+      const userToken = await localStorage.getItem("userToken");
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userToken,
+        },
+        params: {
+          selectedDate: selectedDate,
+        },
+      };
+      const response = await axios.get(
+        TRANSACTION_CROPS_WITH_COUNT_API,
+        config
+      );
       const { data } = response;
 
       return data;

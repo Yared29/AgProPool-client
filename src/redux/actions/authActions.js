@@ -14,7 +14,7 @@ export const userLogin = createAsyncThunk(
       const response = await axios.post(LOGIN_API, { phone, password }, config);
       const { data } = response;
 
-      localStorage.setItem("user", data);
+      localStorage.setItem("userInfo", JSON.stringify(data));
       localStorage.setItem("userToken", data.token);
       return data;
     } catch (error) {
@@ -31,7 +31,7 @@ export const userLogout = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      localStorage.removeItem("user");
+      localStorage.removeItem("userInfo");
       localStorage.removeItem("userToken");
       localStorage.clear();
       return null;
