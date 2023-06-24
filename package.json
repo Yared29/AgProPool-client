@@ -12,9 +12,13 @@
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
+    "formik": "^2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-redux": "^8.1.1",
     "react-router-dom": "^6.13.0",
     "react-select": "^5.7.3"
   },

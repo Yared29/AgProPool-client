@@ -1,14 +1,12 @@
 import { Navigate } from "react-router-dom";
-import Layout from "../components/Layout";
 
 const PublicRoute = ({ children }) => {
-  // let user = localStorage.getItem("user");
-  var isSignedIn = true;
+  let user = localStorage.getItem("user");
 
-  if (isSignedIn) {
+  if (user) {
     return <Navigate to='/dashboard' replace />;
   }
-  return <Layout>{children}</Layout>;
+  return <>{children}</>;
 };
 
 export default PublicRoute;

@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import HamburgerButton from "./HamburgerMenuButton/HamburgerButton";
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { LogoutButton } from "./LogoutButton";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
@@ -22,7 +23,6 @@ const Sidebar = () => {
     },
     { title: "Kebeles", path: "/kebeles", src: <SiOpenaccess /> },
     { title: "Crops", path: "/crops", src: <SiOpenaccess /> },
-    { title: "Logout", path: "/logout", src: <SiOpenaccess />, gap: "true" },
   ];
 
   return (
@@ -66,6 +66,8 @@ const Sidebar = () => {
               </li>
             </Link>
           ))}
+
+          <LogoutButton />
         </ul>
       </div>
       {/* Mobile Menu */}
