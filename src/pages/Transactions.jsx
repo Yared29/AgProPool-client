@@ -45,13 +45,10 @@ const Transactions = () => {
           <div className='flex flex-col items-center justify-start float-left '>
             <input
               type='date'
-              className='p-2 border border-gray-300 rounded-md'
+              className='p-2 border border-gray-300 rounded-md text-black'
               value={selectedDate}
               onChange={handleDateChange}
             />
-            {selectedDate && (
-              <p className='mt-2'>Selected date: {selectedDate}</p>
-            )}
           </div>
         </div>
         {isEmpty(transactionsList) ? (
