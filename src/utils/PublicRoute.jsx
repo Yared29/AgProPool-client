@@ -1,7 +1,8 @@
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const PublicRoute = ({ children }) => {
-  let userInfo = localStorage.getItem("userInfo");
+  const { userInfo } = useSelector((state) => state.auth);
 
   if (userInfo) {
     return <Navigate to='/dashboard' replace />;

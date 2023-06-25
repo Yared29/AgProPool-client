@@ -48,7 +48,7 @@ const Farmers = () => {
                 {farmer.phone}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {farmer.kebele}
+                {farmer.kebele.name}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
                 {farmer.gender}

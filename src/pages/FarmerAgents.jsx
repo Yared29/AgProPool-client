@@ -1,23 +1,23 @@
 import { useEffect } from "react";
 import Table from "../components/Table";
 import { useDispatch, useSelector } from "react-redux";
-import { getMediatorsList } from "../redux/actions/mediatorActions";
+import { getFarmerAgentsList } from "../redux/actions/farmerAgentActions";
 import { Loading } from "../components/Loading";
 import Error from "../components/Error";
 import { isEmpty } from "../utils/isEmpty";
 import Empty from "../components/Empty";
 import TableTitle from "../components/TableTitle";
 
-const columns = ["#", "Name", "Phone", "Kebele", "Gender", "Registered By"];
-const Mediators = () => {
-  const { loading, error, mediatorsList } = useSelector(
-    (state) => state.mediator
+const columns = ["#", "Name", "Phone", "Registered By"];
+const FarmerAgents = () => {
+  const { loading, error, farmerAgentsList } = useSelector(
+    (state) => state.farmerAgent
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMediatorsList());
+    dispatch(getFarmerAgentsList());
   }, []);
 
   if (loading) return <Loading />;
@@ -25,31 +25,25 @@ const Mediators = () => {
 
   return (
     <div>
-      <TableTitle title='Mediators' addRoute='/add-mediator' />
-      {isEmpty(mediatorsList) ? (
-        <Empty message='Empty mediators list' />
+      <TableTitle title='FarmerAgents' addRoute='/add-farmer-agent' />
+      {isEmpty(farmerAgentsList) ? (
+        <Empty message='Empty farmerAgents list' />
       ) : (
         <Table
           columns={columns}
-          data={mediatorsList.map((mediator, index) => (
-            <tr key={mediator._id}>
+          data={farmerAgentsList.map((farmerAgent, index) => (
+            <tr key={farmerAgent._id}>
               <td className='px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap'>
                 {index + 1}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {mediator.name}
+                {farmerAgent.name}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {mediator.phone}
+                {farmerAgent.phone}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {mediator.kebele.name}
-              </td>
-              <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {mediator.gender}
-              </td>
-              <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {mediator.registeredBy.name}
+                {farmerAgent.registeredBy && farmerAgent.registeredBy.name}
               </td>
             </tr>
           ))}
@@ -59,4 +53,4 @@ const Mediators = () => {
   );
 };
 
-export default Mediators;
+export default FarmerAgents;

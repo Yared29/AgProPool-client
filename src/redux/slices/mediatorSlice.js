@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { registerMediator, getMediatorsList } from "../actions/mediatorActions";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: false,
@@ -19,11 +20,12 @@ const mediatorSlice = createSlice({
       state.error = null;
     },
     [registerMediator.fulfilled]: (state, { payload }) => {
-      console.log(payload);
+      toast.success("Mediator registered successfully!");
       state.loading = false;
       state.mediatorsList = [payload, ...state.mediatorsList];
     },
     [registerMediator.rejected]: (state, { payload }) => {
+      if (payload) toast.error(payload);
       state.loading = false;
       state.error = payload;
     },

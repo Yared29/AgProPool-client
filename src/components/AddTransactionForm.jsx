@@ -59,7 +59,7 @@ const AddTransactionForm = () => {
           handleBlur,
           handleSubmit,
         }) => (
-          <form className='mt-6' onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className='flex  flex-col  justify-center'>
               {error && <div className='text-red-500'>{error}</div>}
 

@@ -11,6 +11,10 @@ import PublicRoute from "./utils/PublicRoute";
 import AddFarmerPage from "./pages/AddFarmerPage";
 import AddTransactionPage from "./pages/AddTransactionPage";
 import AddMediatorPage from "./pages/AddMediatorPage";
+import Admins from "./pages/Admins";
+import FarmerAgents from "./pages/FarmerAgents";
+import AddFarmerAgentPage from "./pages/AddFarmerAgentPage";
+import AddAdminPage from "./pages/AddAdminPage";
 
 const routes = [
   {
@@ -24,7 +28,8 @@ const routes = [
   {
     path: "dashboard",
     element: (
-      <PrivateRoute>
+      <PrivateRoute
+        accessRole={["super_admin", "admin", "farmer_agent", "mediator"]}>
         <Dashboard />
       </PrivateRoute>
     ),
@@ -32,7 +37,8 @@ const routes = [
   {
     path: "transactions",
     element: (
-      <PrivateRoute>
+      <PrivateRoute
+        accessRole={["super_admin", "admin", "farmer_agent", "mediator"]}>
         <Transactions />
       </PrivateRoute>
     ),
@@ -40,7 +46,8 @@ const routes = [
   {
     path: "farmers",
     element: (
-      <PrivateRoute>
+      <PrivateRoute
+        accessRole={["super_admin", "admin", "farmer_agent", "mediator"]}>
         <Farmers />
       </PrivateRoute>
     ),
@@ -48,7 +55,7 @@ const routes = [
   {
     path: "mediators",
     element: (
-      <PrivateRoute>
+      <PrivateRoute accessRole={["super_admin", "admin", "farmer_agent"]}>
         <Mediators />
       </PrivateRoute>
     ),
@@ -56,7 +63,8 @@ const routes = [
   {
     path: "kebeles",
     element: (
-      <PrivateRoute>
+      <PrivateRoute
+        accessRole={["super_admin", "admin", "farmer_agent", "mediator"]}>
         <Kebeles />
       </PrivateRoute>
     ),
@@ -64,7 +72,8 @@ const routes = [
   {
     path: "crops",
     element: (
-      <PrivateRoute>
+      <PrivateRoute
+        accessRole={["super_admin", "admin", "farmer_agent", "mediator"]}>
         <Crops />
       </PrivateRoute>
     ),
@@ -72,7 +81,8 @@ const routes = [
   {
     path: "add-transaction",
     element: (
-      <PrivateRoute>
+      <PrivateRoute
+        accessRole={["super_admin", "admin", "farmer_agent", "mediator"]}>
         <AddTransactionPage />
       </PrivateRoute>
     ),
@@ -80,7 +90,8 @@ const routes = [
   {
     path: "add-farmer",
     element: (
-      <PrivateRoute>
+      <PrivateRoute
+        accessRole={["super_admin", "admin", "farmer_agent", "mediator"]}>
         <AddFarmerPage />
       </PrivateRoute>
     ),
@@ -88,8 +99,40 @@ const routes = [
   {
     path: "add-mediator",
     element: (
-      <PrivateRoute>
+      <PrivateRoute accessRole={["super_admin", "admin", "farmer_agent"]}>
         <AddMediatorPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "farmer-agents",
+    element: (
+      <PrivateRoute accessRole={["super_admin", "admin"]}>
+        <FarmerAgents />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "add-farmer-agent",
+    element: (
+      <PrivateRoute accessRole={["super_admin", "admin"]}>
+        <AddFarmerAgentPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "admins",
+    element: (
+      <PrivateRoute accessRole={["super_admin"]}>
+        <Admins />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "add-admin",
+    element: (
+      <PrivateRoute accessRole={["super_admin"]}>
+        <AddAdminPage />
       </PrivateRoute>
     ),
   },
