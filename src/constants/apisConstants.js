@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:5001/api";
+export const BASE_URL = "https://agpropool-server.cyclic.app/api";
 export const USER_API = BASE_URL + "/user";
 export const LOGIN_API = USER_API + "/login-user";
 export const REGISTER_API = USER_API + "/register";
