@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerMediator } from "../redux/actions/mediatorActions";
 import CustomeSelect from "./Form/CustomeSelect";
 import * as Yup from "yup";
+import { useEffect } from "react";
+import { getKebelesListForDropdown } from "../redux/actions/kebeleActions";
+import { Loading } from "./Loading";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -13,9 +16,10 @@ const initialValues = {
   phone: "",
   gender: "",
   kebele: "",
+  password: "",
 };
 
-const RegisterFamrmerSchema = Yup.object().shape({
+const RegisterMediatorSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
@@ -26,21 +30,30 @@ const RegisterFamrmerSchema = Yup.object().shape({
     .min(10, "Too Short!")
     .max(11, "Too Long!")
     .matches(phoneRegExp, "Phone number is not valid"),
+  password: Yup.string().min(5, "Too Short!").required("Required"),
 });
 
 const AddMediatorForm = () => {
-  const { loading, error } = useSelector((state) => state.mediator);
   const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.mediator);
+  const { kebelesListForDropdown, loadingKebeleOptions = loading } =
+    useSelector((state) => state.kebele);
+
+  useEffect(() => {
+    dispatch(getKebelesListForDropdown());
+  }, []);
 
   const submitForm = (data) => {
     dispatch(registerMediator(data));
   };
 
+  if (loadingKebeleOptions) return <Loading />;
+
   return (
     <div className='flex flex-col items-center mx-auto justify-center'>
       <Formik
         initialValues={initialValues}
-        validationSchema={RegisterFamrmerSchema}
+        validationSchema={RegisterMediatorSchema}
         onSubmit={(values) => {
           submitForm(values);
         }}>
@@ -52,7 +65,7 @@ const AddMediatorForm = () => {
           handleBlur,
           handleSubmit,
         }) => (
-          <form className='mt-6' onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className='flex  flex-col  justify-center'>
               {error && <div className='text-red-500'>{error}</div>}
 
@@ -102,12 +115,19 @@ const AddMediatorForm = () => {
                 width='80'
                 isMulti={false}
                 component={CustomeSelect}
-                options={[
-                  { value: "one", label: "One" },
-                  { value: "two", label: "Two" },
-                  { value: "three", label: "Three" },
-                ]}
+                options={kebelesListForDropdown}
                 error={errors.kebele && touched.kebele && errors.kebele}
+              />
+              <CustomeTextField
+                title='Password'
+                type='password'
+                placeholder='*********'
+                id='password'
+                width='80'
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                value={values.password}
+                error={errors.password && touched.password && errors.password}
               />
             </div>
             <button

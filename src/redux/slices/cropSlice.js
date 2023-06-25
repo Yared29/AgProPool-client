@@ -29,7 +29,7 @@ const cropSlice = createSlice({
       state.cropsList = [payload, ...state.cropsList];
     },
     [addCrop.rejected]: (state, { payload }) => {
-      toast.error(payload);
+      if (payload) toast.error(payload);
       state.loading = false;
       state.error = payload;
     },

@@ -30,7 +30,7 @@ const farmerSlice = createSlice({
       state.farmersList = [payload, ...state.farmersList];
     },
     [registerFarmer.rejected]: (state, { payload }) => {
-      toast.error(payload);
+      if (payload) toast.error(payload);
       state.loading = false;
       state.error = payload;
     },

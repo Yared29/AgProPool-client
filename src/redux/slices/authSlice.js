@@ -38,7 +38,7 @@ const authSlice = createSlice({
       state.userToken = payload.token;
     },
     [userLogin.rejected]: (state, { payload }) => {
-      toast.error(payload);
+      if (payload) toast.error(payload);
       state.loading = false;
       state.error = payload;
     },

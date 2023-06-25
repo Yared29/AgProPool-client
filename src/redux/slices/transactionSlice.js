@@ -30,7 +30,7 @@ const transactionSlice = createSlice({
       state.transactionsList = [payload, ...state.transactionsList];
     },
     [addTransaction.rejected]: (state, { payload }) => {
-      toast.error(payload);
+      if (payload) toast.error(payload);
       state.loading = false;
       state.error = payload;
     },

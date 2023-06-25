@@ -1,16 +1,10 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  REGISTER_MEDIATOR_API,
-  MEDIATOR_API,
-} from "../../constants/apisConstants";
+import { REGISTER_ADMIN_API, ADMIN_API } from "../../constants/apisConstants";
 
-export const registerMediator = createAsyncThunk(
-  "mediator/register",
-  async (
-    { name, kebele, age, gender, phone, password },
-    { rejectWithValue }
-  ) => {
+export const registerAdmin = createAsyncThunk(
+  "admin/register",
+  async ({ name, phone, gender, password }, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
 
@@ -21,8 +15,8 @@ export const registerMediator = createAsyncThunk(
         },
       };
       const response = await axios.post(
-        REGISTER_MEDIATOR_API,
-        { name, kebele, age, gender, phone, password },
+        REGISTER_ADMIN_API,
+        { name, phone, gender, password },
         config
       );
       const { data } = response;
@@ -38,8 +32,8 @@ export const registerMediator = createAsyncThunk(
   }
 );
 
-export const getMediatorsList = createAsyncThunk(
-  "mediator/all",
+export const getAdminsList = createAsyncThunk(
+  "admin/all",
   async (_, { rejectWithValue }) => {
     try {
       const userToken = await localStorage.getItem("userToken");
@@ -50,7 +44,7 @@ export const getMediatorsList = createAsyncThunk(
           Authorization: "Bearer " + userToken,
         },
       };
-      const response = await axios.get(MEDIATOR_API, config);
+      const response = await axios.get(ADMIN_API, config);
       const { data } = response;
 
       return data;

@@ -1,7 +1,7 @@
 import CustomeTextField from "./Form/CustomeTextField";
 import { Field, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { registerFarmer } from "../redux/actions/farmerActions";
+import { registerFarmerAgent } from "../redux/actions/farmerAgentActions";
 import CustomeSelect from "./Form/CustomeSelect";
 import * as Yup from "yup";
 import { useEffect } from "react";
@@ -13,44 +13,47 @@ const phoneRegExp =
 
 const initialValues = {
   name: "",
-  age: "",
   phone: "",
   gender: "",
   kebele: "",
+  password: "",
 };
 
-const RegisterFarmerSchema = Yup.object().shape({
+const RegisterFarmerAgentSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  age: Yup.number().required("Required"),
   gender: Yup.string().required("Required"),
   kebele: Yup.string().required("Required"),
   phone: Yup.string()
     .min(10, "Too Short!")
     .max(11, "Too Long!")
     .matches(phoneRegExp, "Phone number is not valid"),
+  password: Yup.string().min(5, "Too Short!").required("Required"),
 });
 
-const AddFarmerForm = () => {
-  const { loading, error } = useSelector((state) => state.farmer);
+const AddFarmerAgentForm = () => {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.farmerAgent);
   const { kebelesListForDropdown, loadingKebeleOptions = loading } =
     useSelector((state) => state.kebele);
-  const dispatch = useDispatch();
 
-  const submitForm = (data) => {
-    dispatch(registerFarmer(data));
-  };
   useEffect(() => {
     dispatch(getKebelesListForDropdown());
   }, []);
+
+  const submitForm = (data) => {
+    dispatch(registerFarmerAgent(data));
+  };
+
   if (loadingKebeleOptions) return <Loading />;
+
   return (
     <div className='flex flex-col items-center mx-auto justify-center'>
       <Formik
         initialValues={initialValues}
-        validationSchema={RegisterFarmerSchema}
+        validationSchema={RegisterFarmerAgentSchema}
         onSubmit={(values) => {
           submitForm(values);
         }}>
@@ -67,7 +70,7 @@ const AddFarmerForm = () => {
               {error && <div className='text-red-500'>{error}</div>}
 
               <CustomeTextField
-                title='Farmer Name'
+                title='FarmerAgent Name'
                 type='text'
                 placeholder='Abebe Kebede'
                 id='name'
@@ -76,17 +79,6 @@ const AddFarmerForm = () => {
                 handleBlur={handleBlur}
                 value={values.name}
                 error={errors.name && touched.name && errors.name}
-              />
-              <CustomeTextField
-                title='Age'
-                type='number'
-                placeholder='40'
-                id='age'
-                width='80'
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                value={values.age}
-                error={errors.age && touched.age && errors.age}
               />
 
               <Field
@@ -126,12 +118,23 @@ const AddFarmerForm = () => {
                 options={kebelesListForDropdown}
                 error={errors.kebele && touched.kebele && errors.kebele}
               />
+              <CustomeTextField
+                title='Password'
+                type='password'
+                placeholder='*********'
+                id='password'
+                width='80'
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                value={values.password}
+                error={errors.password && touched.password && errors.password}
+              />
             </div>
             <button
               type='submit'
               disabled={loading}
-              className='w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none'>
-              {loading ? "Loading" : "Register Farmer"}
+              className='m-1 text-md w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none'>
+              {loading ? "Loading" : "Register Farmer Agent"}
             </button>
           </form>
         )}
@@ -140,4 +143,4 @@ const AddFarmerForm = () => {
   );
 };
 
-export default AddFarmerForm;
+export default AddFarmerAgentForm;

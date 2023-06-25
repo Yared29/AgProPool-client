@@ -29,7 +29,7 @@ const Dashboard = () => {
   if (!isEmpty(error)) return <Error message={error} />;
   return (
     <div>
-      <div className='mx-auto text-center flex flex-wrap justify-between'>
+      <div className='lg:p-8 md:p-8 p-0 mx-auto text-center flex flex-wrap justify-between'>
         <span className='lg:text-xl md:text-xl sm:text-lg font-medium whitespace-nowrap dark:text-white'>
           Dashboard
         </span>
@@ -38,13 +38,10 @@ const Dashboard = () => {
           <div className='flex flex-col items-center justify-start float-left '>
             <input
               type='date'
-              className='p-2 border border-gray-300 rounded-md'
+              className='p-2 border border-gray-300 rounded-md bg-white text-black'
               value={selectedDate}
               onChange={handleDateChange}
             />
-            {selectedDate && (
-              <p className='mt-2'>Selected date: {selectedDate}</p>
-            )}
           </div>
         </div>
       </div>

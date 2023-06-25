@@ -25,13 +25,13 @@ const kebeleSlice = createSlice({
       state.error = null;
     },
     [addKebele.fulfilled]: (state, { payload }) => {
-      toast.success("Farmer added successfully!");
+      toast.success("Kebele added successfully!");
       state.loading = false;
       state.kebelesList = [payload, ...state.kebelesList];
       state.kebelesListForDropdown = [payload, ...state.kebelesListForDropdown];
     },
     [addKebele.rejected]: (state, { payload }) => {
-      toast.error(payload);
+      if (payload) toast.error(payload);
       state.loading = false;
       state.error = payload;
     },
