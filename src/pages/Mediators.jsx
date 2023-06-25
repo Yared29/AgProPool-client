@@ -43,13 +43,13 @@ const Mediators = () => {
                 {mediator.phone}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {mediator.kebele.name}
+                {mediator.kebele && mediator.kebele.name}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
                 {mediator.gender}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
-                {mediator.registeredBy.name}
+                {mediator.registeredBy && mediator.registeredBy.name}
               </td>
             </tr>
           ))}
