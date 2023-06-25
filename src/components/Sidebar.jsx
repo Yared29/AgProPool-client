@@ -153,15 +153,8 @@ const Sidebar = () => {
               </Link>
             );
           })}
-          <Link to='/logout' key='logout' onClick={() => setMobileMenu(false)}>
-            <span
-              className={` ${
-                location.pathname === "/logout" &&
-                "bg-gray-200 dark:bg-gray-700"
-              } p-2 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700`}>
-              Logout
-            </span>
-          </Link>
+          <LogoutButton open={open} />
+          
         </div>
       </div>
     </>
