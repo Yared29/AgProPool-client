@@ -17,7 +17,7 @@ const Table = ({ columns = initialColumn, data }) => {
               ))}
             </tr>
           </thead>
-          <tbody className='divide-y divide-gray-400 dark:text-white text-black '>
+          <tbody className='divide-y divide-gray-400 dark:text-gray-200 text-gray-800 '>
             {data}
           </tbody>
         </table>
