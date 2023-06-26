@@ -31,17 +31,17 @@ const Admins = () => {
           columns={columns}
           data={adminsList.map((admin, index) => (
             <tr key={admin._id}>
-              <td className='px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap'>
+              <td className='px-6 py-4 text-sm font-medium dark:text-gray-200 text-gray-800 whitespace-nowrap'>
                 {index + 1}
               </td>
-              <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
+              <td className='px-6 py-4 text-sm dark:text-gray-200 text-gray-800 whitespace-nowrap'>
                 {admin.name}
               </td>
-              <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
+              <td className='px-6 py-4 text-sm dark:text-gray-200 text-gray-800 whitespace-nowrap'>
                 {admin.phone}
               </td>
 
-              <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
+              <td className='px-6 py-4 text-sm dark:text-gray-200 text-gray-800 whitespace-nowrap'>
                 {admin.registeredBy && admin.registeredBy.name}
               </td>
             </tr>

@@ -55,7 +55,7 @@ const CustomeSelect = ({
           {title}
         </div>
         <Select
-          className='react-select-container'
+          className='react-select-container dark:text-white text-black'
           classNamePrefix='react-select'
           name={field.name}
           value={getValue()}

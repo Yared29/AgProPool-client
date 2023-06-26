@@ -53,7 +53,7 @@ const Dashboard = () => {
           columns={columns}
           data={transactionsCropsQuantityList.map((crop, index) => (
             <tr key={index}>
-              <td className='px-6 py-4 text-sm font-medium text-gray-200 whitespace-nowrap'>
+              <td className='px-6 py-4 text-sm font-medium dark:text-gray-200 text-gray-800 whitespace-nowrap'>
                 {index + 1}
               </td>
               <td className='px-6 py-4 text-sm text-gray-200 whitespace-nowrap'>
