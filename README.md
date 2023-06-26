@@ -69,6 +69,30 @@ or
 
 **State Managment:** Redux Toolkit
 
+## Test Accounts
+Use this account to access the live versionRole: 
+
+**Role: Superadmin**
+
+Phone: **0911223344**
+
+Password: **12345678**
+
+
+**Role: Admin**
+
+Phone: **0929124754**
+
+Password: **12345678**
+
+
+**Role: Farmer Agent**
+
+Phone: **0955112233**
+
+Password: **12345678**
+
+
 ## Screenshots
 
 | Sign In Page                                        | Dashboard Page                                         |
