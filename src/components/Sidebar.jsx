@@ -93,7 +93,7 @@ const Sidebar = () => {
           </div>
         </Link>
 
-        <ul className='pt-6'>
+        <ul className='pt-6 overflow-auto'>
           {Menus.map((menu, index) => {
             if (userInfo && !menu.accessRole.includes(userInfo.role)) {
               return;
@@ -154,7 +154,6 @@ const Sidebar = () => {
             );
           })}
           <LogoutButton open={open} />
-          
         </div>
       </div>
     </>
