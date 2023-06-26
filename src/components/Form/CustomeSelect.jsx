@@ -51,7 +51,7 @@ const CustomeSelect = ({
   } else {
     return (
       <div className={"w-" + width + " p-2"}>
-        <div className='block mt-2 text-xs font-semibold text-gray-100 uppercase pb-2'>
+        <div className='block mt-2 text-xs font-semibold dark:text-white text-black uppercase pb-2'>
           {title}
         </div>
         <Select

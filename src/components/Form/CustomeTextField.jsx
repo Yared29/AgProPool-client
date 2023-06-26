@@ -12,12 +12,12 @@ const CustomeTextField = ({
   return (
     <div className={"w-" + width + " p-2"}>
       <label
-        className='block mt-2 text-xs font-semibold text-gray-100 uppercase pb-2'
+        className='block mt-2 text-xs font-semibold dark:text-white text-black uppercase pb-2'
         htmlFor='username'>
         {title}
       </label>
       <input
-        className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+        className='shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline'
         id={id}
         type={type}
         placeholder={placeholder}
