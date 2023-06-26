@@ -95,19 +95,16 @@ const Crops = () => {
           columns={columns}
           data={cropsList.map((crop, index) => (
             <tr key={index}>
-              < <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>>
+              <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>
                 {index + 1}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {crop.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {crop.createdBy.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {crop.createdAt}
               </td>
             </tr>

@@ -33,27 +33,22 @@ const Mediators = () => {
           columns={columns}
           data={mediatorsList.map((mediator, index) => (
             <tr key={mediator._id}>
-              < <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>>
+              <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>
                 {index + 1}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {mediator.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {mediator.phone}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {mediator.kebele && mediator.kebele.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {mediator.gender}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {mediator.registeredBy && mediator.registeredBy.name}
               </td>
             </tr>

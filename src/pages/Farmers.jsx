@@ -38,31 +38,25 @@ const Farmers = () => {
           columns={columns}
           data={farmersList.map((farmer, index) => (
             <tr key={farmer._id}>
-              < <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>>
+              <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>
                 {index + 1}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {farmer.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {farmer.phone}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {farmer.kebele.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {farmer.gender}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {farmer.age}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {farmer.registeredBy.name}
               </td>
             </tr>

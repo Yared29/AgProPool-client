@@ -31,7 +31,7 @@ const Admins = () => {
           columns={columns}
           data={adminsList.map((admin, index) => (
             <tr key={admin._id}>
-              < <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>>
+              <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>
                 {index + 1}
               </td>
               <td className='px-6 py-4 text-sm dark:text-gray-200 text-gray-800 whitespace-nowrap'>

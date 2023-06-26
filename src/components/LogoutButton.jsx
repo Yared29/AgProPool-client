@@ -22,11 +22,15 @@ export const LogoutButton = ({ open }) => {
     <div className='mt-9'>
       <span
         className={`${!open && "hidden"} origin-left duration-300 hover:block`}>
-        <div className='px-3 text-white'>User: {userInfo && userInfo.name}</div>
+        <div className='px-3 dark:text-white'>
+          User: {userInfo && userInfo.name}
+        </div>
       </span>
       <span
         className={`${!open && "hidden"} origin-left duration-300 hover:block`}>
-        <div className='px-3 text-white'>Role: {userInfo && userInfo.role}</div>
+        <div className='px-3 dark:text-white'>
+          Role: {userInfo && userInfo.role}
+        </div>
       </span>
       <li
         onClick={() => handleLogout()}

@@ -95,19 +95,16 @@ const Kebeles = () => {
           columns={columns}
           data={kebelesList.map((kebele, index) => (
             <tr key={index}>
-              < <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>>
+              <td className='px-6 py-4 text-sm font-medium whitespace-nowrap'>
                 {index + 1}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {kebele.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {kebele.createdBy.name}
               </td>
               <td className='px-6 py-4 text-sm whitespace-nowrap'>
-
                 {kebele.createdAt}
               </td>
             </tr>
