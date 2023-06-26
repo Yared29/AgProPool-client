@@ -54,7 +54,7 @@ const Crops = () => {
               <form className='flex flex-col' onSubmit={handleSubmit}>
                 {error && <div className='text-red-500'>{error}</div>}
                 <label
-                  className='p-1 block mt-2 text-xs font-semibold text-gray-100 uppercase pb-2'
+                  className='p-1 block mt-2 text-xs font-semibold dark:text-gray-100 text-gray-800  uppercase pb-2'
                   htmlFor='username'>
                   Crop Name
                 </label>

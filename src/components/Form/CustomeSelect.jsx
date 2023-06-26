@@ -30,7 +30,7 @@ const CustomeSelect = ({
   if (!isMulti) {
     return (
       <div className={"w-" + width + " p-2"}>
-        <div className='block mt-2 text-xs font-semibold text-gray-100 uppercase pb-2'>
+        <div className='block mt-2 text-xs font-semibold dark:text-gray-100 text-gray-800  uppercase pb-2'>
           {title}
         </div>
         <Select
@@ -51,11 +51,11 @@ const CustomeSelect = ({
   } else {
     return (
       <div className={"w-" + width + " p-2"}>
-        <div className='block mt-2 text-xs font-semibold dark:text-white text-black uppercase pb-2'>
+        <div className='block mt-2 text-xs font-semibold dark:text-gray-100 text-gray-800 uppercase pb-2'>
           {title}
         </div>
         <Select
-          className='react-select-container dark:text-white text-black'
+          className='react-select-container dark:text-gray-100 text-gray-800'
           classNamePrefix='react-select'
           name={field.name}
           value={getValue()}
